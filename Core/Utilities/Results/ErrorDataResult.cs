@@ -8,6 +8,4 @@
         public ErrorDataResult() : base(default,false) { }
 
     }
-
-
 }
