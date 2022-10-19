@@ -14,17 +14,36 @@ namespace ConsoleUI
         {
             //GetProductByUnitPriceTest();
             //GetAllCategoryTest();
+            //GetProductDetails();
+            IProductService productService = new ProductManager(new EfProductDal());
 
+
+
+            var products = productService.GetAll();
+
+            if (products.Success)
+            {
+                products.Data.ForEach(p => Console.WriteLine(p.ProductName + " " + p.UnitPrice));
+            }
+            else
+            {
+                Console.WriteLine(products.Message);
+            }
+
+            
+
+        }
+
+        private static void GetProductDetails()
+        {
             IProductService productService = new ProductManager(new EfProductDal());
 
             var products = productService.GetProductDetails();
 
-            foreach (var product in products)
+            foreach (var product in products.Data)
             {
                 Console.WriteLine($"[{product.CategoryName}]  [{product.ProductName}]  [{product.UnitsInStock}] Stock   [{product.UnitPrice}]$ ");
             }
-
-
         }
 
         private static void GetAllCategoryTest()
@@ -33,7 +52,7 @@ namespace ConsoleUI
 
             var categories = categoryService.GetAll();
 
-            foreach (var category in categories)
+            foreach (var category in categories.Data)
             {
                 Console.WriteLine("{0}", category.CategoryName);
             }
@@ -45,7 +64,7 @@ namespace ConsoleUI
 
             var products = productService.GetByUnitPrice(50, 100);
 
-            products.ForEach(p => Console.WriteLine(p.ProductName + " " + p.UnitPrice));
+            products.Data.ForEach(p => Console.WriteLine(p.ProductName + " " + p.UnitPrice));
 
         }
     }

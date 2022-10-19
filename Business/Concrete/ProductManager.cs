@@ -30,9 +30,13 @@ namespace Business.Concrete
         {
             //Business Code
             //Yetkisi var mı?
+            if (DateTime.Now.Hour == 2)
+            {
+                return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
+            }
             var result = _productDal.GetAll();
 
-            return new SuccessDataResult<List<Product>>(result);
+            return new SuccessDataResult<List<Product>>(result, Messages.ProductListed);
 
         }
 
