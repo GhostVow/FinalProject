@@ -26,6 +26,12 @@ namespace Business.Concrete
             return new SuccessResult(Messages.ProductAdded);
         }
 
+        public IResult Delete(Product product)
+        {
+            _productDal.Delete(product);
+            return new SuccessResult(Messages.ProductDeleted);
+        }
+
         public IDataResult<List<Product>> GetAll()
         {
             //Business Code
@@ -40,7 +46,7 @@ namespace Business.Concrete
 
         }
 
-        public IDataResult<List<Product>> GetAllByCategoryId(int categoryId)
+        public IDataResult<List<Product>> GetByCategoryId(int categoryId)
         {
            var result =_productDal.GetAll(p => p.CategoryId == categoryId);
 
