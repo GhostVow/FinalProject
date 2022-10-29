@@ -6,11 +6,7 @@ namespace Business.Constants
 {
     public static class Messages
     {
-        //Product
-        public static string ProductAdded => "The product has been added."; 
-        public static string ProductDeleted => "The product has been deleted."; 
-        public static string ProductUpdated => "The product has been updated.";
-        public static string ProductListed => "The products are listed.";
+        
 
 
 

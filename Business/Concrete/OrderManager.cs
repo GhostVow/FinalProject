@@ -21,7 +21,7 @@ namespace Business.Concrete
         public IResult Add(Order order)
         {
             _orderDal.Add(order);
-            return new SuccessResult(Messages.ProductAdded);
+            return new SuccessResult(Messages.OrderAdded);
         }
 
         public IResult Delete(Order order)
